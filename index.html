@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zeitformate-Uhr</title>
+  <meta name="description" content="Die aktuelle Uhrzeit in vier Zeitformaten – analog und digital – mit Konverter.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <main class="wrap">
+    <header class="glass top">
+      <h1>Zeitformate</h1>
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="live" role="tab">Aktuelle Zeit</button>
+        <button class="tab" data-tab="conv" role="tab">Konverter</button>
+      </nav>
+      <button id="theme" class="icon" aria-label="Hell/Dunkel umschalten">◐</button>
+    </header>
+
+    <section id="live" class="view">
+      <div class="grid live" id="liveGrid"></div>
+    </section>
+
+    <section id="conv" class="view" hidden>
+      <div class="glass form">
+        <label>Eingabeformat
+          <select id="src"></select>
+        </label>
+        <div class="inputs">
+          <label>Std <input id="ih" type="number" min="0" step="1" value="12" inputmode="numeric"></label>
+          <label>Min <input id="im" type="number" min="0" step="1" value="0" inputmode="numeric"></label>
+          <label>Sek <input id="is" type="number" min="0" step="1" value="0" inputmode="numeric"></label>
+        </div>
+        <button id="now" class="btn">Aktuelle Zeit einsetzen</button>
+        <p id="err" class="err" role="alert"></p>
+      </div>
+      <div class="grid" id="convGrid"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

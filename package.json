@@ -1,0 +1,10 @@
+{
+  "name": "zeitformate-uhr",
+  "version": "1.0.0",
+  "description": "Aktuelle Uhrzeit in vier Zeitformaten (analog und digital) mit Konverter",
+  "private": true,
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "license": "MIT"
+}
