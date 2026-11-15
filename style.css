@@ -50,8 +50,8 @@ body {
 [hidden] { display: none !important; }
 
 .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.grid.live .card:first-child { grid-column: 1 / -1; }
-.grid.live .card:first-child .dial { max-width: 340px; }
+/*.grid.live .card:first-child { grid-column: 1 / -1; }*/
+/*.grid.live .card:first-child .dial { max-width: 340px; }*/
 .card { padding: 20px; text-align: center; }
 .card h2 { margin: 0; font-size: 1.25rem; letter-spacing: .04em; }
 .sub { margin: 4px 0 12px; color: var(--muted); font-size: .85rem; }
