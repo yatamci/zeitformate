@@ -18,7 +18,7 @@ function makeCard(f) {
   for (let i = 0; i < total; i++) {
     const major = i % f.sec === 0, len = major ? 10 : 5;
     const red = third && i % (total / 3) === 0; // Position 0, 1/3, 2/3 des Zifferblatts
-    ticks += `<line class="${major ? "t-major" : "t-minor"}" x1="100" y1="${100 - 94}" x2="100" y2="${100 - 94 + len}" transform="rotate(${(i / total) * 360} 100 100)"${red ? ' style="stroke:var(--accent);stroke-width:2.5"' : ""}/>`;
+    ticks += `<line class="${major ? "t-major" : "t-minor"}" x1="100" y1="${100 - 94}" x2="100" y2="${100 - 94 + len}" transform="rotate(${(i / total) * 360} 100 100)"${red ? ' style="stroke:#5b8cff;stroke-width:2.5"' : ""}/>`;
   }
   for (let i = 1; i <= f.dial; i++) {
     const a = (i / f.dial) * 2 * Math.PI;
@@ -28,7 +28,7 @@ function makeCard(f) {
     <svg class="dial" viewBox="0 0 200 200" role="img" aria-label="Analoguhr ${f.name}">
       <circle class="face" cx="100" cy="100" r="97"/>${ticks}${nums}
       <line class="hand hour" x1="100" y1="100" x2="100" y2="58"/>
-      ${third ? '<line class="hand turn" x1="100" y1="100" x2="100" y2="79" style="stroke:#5b8cff;stroke-width:5"/>' : ""}
+      ${third ? '<line class="hand turn" x1="100" y1="100" x2="100" y2="79" style="stroke:#5b8cff;stroke-width:3"/>' : ""}
       <line class="hand min" x1="100" y1="100" x2="100" y2="34"/>
       <line class="hand sec" x1="100" y1="112" x2="100" y2="24"/>
       <circle class="pin" cx="100" cy="100" r="4.5"/>
