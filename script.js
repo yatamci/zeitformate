@@ -13,10 +13,12 @@ function makeCard(f) {
   const el = document.createElement("article");
   el.className = "glass card";
   const total = f.dial * f.sec;
+  const third = f.H / f.dial === 3; // Formate mit 3 Umdrehungen pro Tag -> dritter Zeiger
   let ticks = "", nums = "";
   for (let i = 0; i < total; i++) {
     const major = i % f.sec === 0, len = major ? 10 : 5;
-    ticks += `<line class="${major ? "t-major" : "t-minor"}" x1="100" y1="${100 - 94}" x2="100" y2="${100 - 94 + len}" transform="rotate(${(i / total) * 360} 100 100)"/>`;
+    const red = third && i % (total / 3) === 0; // Position 0, 1/3, 2/3 des Zifferblatts
+    ticks += `<line class="${major ? "t-major" : "t-minor"}" x1="100" y1="${100 - 94}" x2="100" y2="${100 - 94 + len}" transform="rotate(${(i / total) * 360} 100 100)"${red ? ' style="stroke:var(--accent);stroke-width:2.5"' : ""}/>`;
   }
   for (let i = 1; i <= f.dial; i++) {
     const a = (i / f.dial) * 2 * Math.PI;
@@ -26,12 +28,13 @@ function makeCard(f) {
     <svg class="dial" viewBox="0 0 200 200" role="img" aria-label="Analoguhr ${f.name}">
       <circle class="face" cx="100" cy="100" r="97"/>${ticks}${nums}
       <line class="hand hour" x1="100" y1="100" x2="100" y2="58"/>
+      ${third ? '<line class="hand turn" x1="100" y1="100" x2="100" y2="79" style="stroke:#5b8cff;stroke-width:5"/>' : ""}
       <line class="hand min" x1="100" y1="100" x2="100" y2="34"/>
       <line class="hand sec" x1="100" y1="112" x2="100" y2="24"/>
       <circle class="pin" cx="100" cy="100" r="4.5"/>
     </svg><div class="digital">00:00:00</div>`;
   const q = s => el.querySelector(s), rot = (n, a) => n.setAttribute("transform", `rotate(${a} 100 100)`);
-  const hour = q(".hour"), min = q(".min"), sec = q(".sec"), dig = q(".digital");
+  const hour = q(".hour"), min = q(".min"), sec = q(".sec"), turn = q(".turn"), dig = q(".digital");
   const MS = f.M * f.S, D = f.dial * MS;
   let last = "";
   // t = Sekunden seit Mitternacht (Dezimalzahl)
@@ -42,6 +45,7 @@ function makeCard(f) {
     rot(hour, ((t % D) / D) * 360);
     rot(min, ((t % MS) / MS) * 360);
     rot(sec, ((t % f.S) / f.S) * 360);
+    if (turn) rot(turn, (t / 86400) * 360); // Umdrehung 1: 0°–120°, 2: 120°–240°, 3: 240°–360°
   };
   return el;
 }
