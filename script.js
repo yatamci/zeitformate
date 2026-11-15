@@ -1,10 +1,10 @@
 // Jedes Format ergibt H*M*S = 86400 Einheiten pro Tag -> 1 Format-Sekunde = 1 echte Sekunde.
 // dial = Stunden auf dem Zifferblatt, sec = Minutenabschnitte pro Stundenstrich (dial*sec = M).
 const FORMATS = [
-  { name: "24h / 60min / 60sec", H: 24, M: 60, S: 60, dial: 12, sec: 5, sub: "Standardzeit · 12-Std-Ziffernblatt · 2× täglich" },
-  { name: "36h / 60min / 40sec", H: 36, M: 60, S: 40, dial: 12, sec: 5, sub: "Kurze Minute · 12-Std-Ziffernblatt · 3× täglich" },
-  { name: "36h / 48min / 50sec", H: 36, M: 48, S: 50, dial: 12, sec: 4, sub: "Kurze Stunde · 12-Std-Ziffernblatt · 3× täglich" },
-  { name: "30h / 60min / 48sec", H: 30, M: 60, S: 48, dial: 10, sec: 6, sub: "Mittlere Zeit · 10-Std-Ziffernblatt · 3× täglich" }
+  { name: "24h / 60min / 60s", H: 24, M: 60, S: 60, dial: 12, sec: 5, sub: "Standardzeit · 12-Std-Ziffernblatt · 2× täglich" },
+  { name: "36h / 60min / 40s", H: 36, M: 60, S: 40, dial: 12, sec: 5, sub: "Kurze Minute · 12-Std-Ziffernblatt · 3× täglich" },
+  { name: "36h / 48min / 50s", H: 36, M: 48, S: 50, dial: 12, sec: 4, sub: "Kurze Stunde · 12-Std-Ziffernblatt · 3× täglich" },
+  { name: "30h / 60min / 48s", H: 30, M: 60, S: 48, dial: 10, sec: 6, sub: "Mittlere Zeit · 10-Std-Ziffernblatt · 3× täglich" }
 ];
 const pad = n => String(n).padStart(2, "0");
 const $ = id => document.getElementById(id);
